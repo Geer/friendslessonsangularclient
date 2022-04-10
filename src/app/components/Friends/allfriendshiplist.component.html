@@ -1,0 +1,12 @@
+<!-- {{friends | json}} -->
+<ul>
+    <li *ngFor="let friend of friends | keyvalue">
+        <h1>Friends of: {{ friend.key }}</h1>
+    <ul>
+        <li *ngFor="let item of friend.value">
+          <p>{{item.fullName}}</p>
+        </li>
+    </ul>
+    </li>
+</ul>
+

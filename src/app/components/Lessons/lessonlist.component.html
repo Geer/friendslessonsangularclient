@@ -1,0 +1,20 @@
+<h1>Lessons List of {{userName}}</h1>
+<ng-container *ngIf="lessons?.length">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Lesson name</th>
+          <th scope="col"> Course name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lesson of lessons; index as i">
+                <td>{{ lesson.name }}</td>
+                <td>{{ lesson.course.name }}</td>
+              </tr>
+        </tbody>
+    </table>    
+    <div>
+      <a class="btn btn-primary" routerLink="/userList"> Back </a>
+    </div>
+</ng-container>

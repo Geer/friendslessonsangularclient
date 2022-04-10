@@ -1,0 +1,25 @@
+<h1>Friends List of {{ userName }}</h1>
+<ng-container *ngIf="friends?.length">
+  <ul>
+    <li *ngFor="let friend of friends"> 
+      <p>
+        {{ friend.fullName }}
+      </p>
+    </li>
+  </ul>
+    <!-- <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Full Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let friend of friends; index as i">
+                <td>{{ friend.fullName }}</td>
+              </tr>
+        </tbody>
+    </table>     -->
+  </ng-container>
+  <div>
+    <a class="btn btn-primary" routerLink="/userList"> Back </a>
+  </div>

@@ -1,0 +1,19 @@
+<h1>Users List</h1>
+<ng-container *ngIf="users?.length">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">FullName</th>
+          <th scope="col">Lessons</th>
+          <th scope="col">Friends</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; index as i">
+                <td>{{ user.fullName }}</td>
+                <td><a [routerLink]="['/lessonsList', user.id, user.fullName]">View Lessons</a></td>
+                <td><a [routerLink]="['/friendsList', user.id, user.fullName]">View Friends</a></td>
+              </tr>
+        </tbody>
+    </table>    
+</ng-container>
