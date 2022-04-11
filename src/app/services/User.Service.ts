@@ -6,10 +6,12 @@ import { MessageErrorService } from './message.service';
 import User from '../model/User';
 import Lesson from '../model/Lesson';
 import { Friendship } from '../model/Friendship';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class UserService extends HandleErrorService {
-  private baseUrl = 'https://localhost:44377/api'
+  
+  private baseUrl = `${environment.API_URL}/api`
 
   constructor(private http: HttpClient, messageService: MessageErrorService) {
     super(messageService)
