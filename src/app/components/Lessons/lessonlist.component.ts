@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Lesson from 'src/app/model/Lesson';
-import { LessonService } from 'src/app/services/Lesson.Service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/User.Service';
  
 
 @Component({
@@ -17,7 +17,7 @@ export class LessonListComponent implements OnInit {
     sub: any;
     userName: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private lessonService: LessonService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class LessonListComponent implements OnInit {
       if (self.lessons.length === 0) {
         var id = parseInt(self.id);
         if (!isNaN(id)) {
-          self.lessonService.getLessonsByUserId(id)
+          self.userService.getLessonsByUserId(id)
           .subscribe(response =>
             self.lessons = response);
         }

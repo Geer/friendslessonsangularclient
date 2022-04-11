@@ -4,6 +4,8 @@ import { HttpClient, HttpParams  } from '@angular/common/http';
 import { HandleErrorService } from './handleerror.service';
 import { MessageErrorService } from './message.service';
 import User from '../model/User';
+import Lesson from '../model/Lesson';
+import { Friendship } from '../model/Friendship';
 
 @Injectable({providedIn: 'root'})
 export class UserService extends HandleErrorService {
@@ -16,7 +18,7 @@ export class UserService extends HandleErrorService {
 
 
   getUsersList() {
-    return this.http.get<User[]> (`${this.baseUrl}/user`)
+    return this.http.get<User[]> (`${this.baseUrl}/users`)
       .pipe(
         map(elem => elem as User[]),
         tap( _ => console.log('Users list')),
@@ -25,7 +27,7 @@ export class UserService extends HandleErrorService {
   }
 
   getFriendsByUserId(id: number) {
-    return this.http.get<User[]> (`${this.baseUrl}/User/friendship/${id}`)
+    return this.http.get<User[]> (`${this.baseUrl}/users/${id}/friendships`)
     .pipe(
         map(elem => elem as User[]),
         tap( _ => console.log('Friends list by user id')),
@@ -33,10 +35,18 @@ export class UserService extends HandleErrorService {
     }
 
   getAllFriendshipList() {
-    return this.http.get<Map<string, User[]>> (`${this.baseUrl}/User/friendship`)
+    return this.http.get<Friendship[]> (`${this.baseUrl}/friendships`)
     .pipe(
-        map(elem => elem as Map<string, User[]>),
+        map(elem => elem as Friendship[]),
         tap( _ => console.log('All friendship list')),
-        catchError(this.handleError<Map<string, User[]>>('', new Map<string, User[]>() )));
+        catchError(this.handleError<Friendship[]>('', Array<Friendship>() )));
   }
+
+  getLessonsByUserId(id: number) {
+    return this.http.get<Lesson[]> (`${this.baseUrl}/users/${id}/lessons`)
+    .pipe(
+        map(elem => elem as Lesson[]),
+        tap( _ => console.log('Lessons list by user id')),
+        catchError(this.handleError<Lesson[]>('', new Array<Lesson>() )));
+    }
 }

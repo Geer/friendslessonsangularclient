@@ -6,11 +6,11 @@ import { LessonListComponent } from './components/Lessons/lessonlist.component';
 import { UserListComponent } from './components/users/userlist.components';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'userList', pathMatch: 'full' },
-  { path: 'userList', component: UserListComponent },
-  { path: 'lessonsList/:id/:userName', component: LessonListComponent },
-  { path: 'friendsList/:id/:userName', component: FriendByUserListComponent },
-  { path: 'allFriendshipList', component: AllFriendshipComponent }
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/:id/lessons/:userName', component: LessonListComponent },
+  { path: 'users/:id/friends/:userName', component: FriendByUserListComponent },
+  { path: 'users/friendships', component: AllFriendshipComponent }
 ];
 
 @NgModule({

@@ -11,8 +11,8 @@
         <tbody>
             <tr *ngFor="let user of users; index as i">
                 <td>{{ user.fullName }}</td>
-                <td><a [routerLink]="['/lessonsList', user.id, user.fullName]">View Lessons</a></td>
-                <td><a [routerLink]="['/friendsList', user.id, user.fullName]">View Friends</a></td>
+                <td><a [routerLink]="[user.id, 'lessons', user.fullName]">View Lessons</a></td>
+                <td><a [routerLink]="[user.id, 'friends', user.fullName]">View Friends</a></td>
               </tr>
         </tbody>
     </table>    

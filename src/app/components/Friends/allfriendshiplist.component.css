@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 ul {
     list-style: none;
 }
@@ -5,5 +7,3 @@ ul {
 li {
     list-style: none;
 }
-
-@import "~bootstrap/dist/css/bootstrap.css"

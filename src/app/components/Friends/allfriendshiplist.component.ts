@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Friendship } from "src/app/model/Friendship";
 import User from "src/app/model/User";
 import { UserService } from "src/app/services/User.Service";
 
@@ -10,7 +11,7 @@ import { UserService } from "src/app/services/User.Service";
     })
 export class AllFriendshipComponent implements OnInit {
     
-    friends: Map<string, User[]> = new Map<string, User[]>();
+    friends: Friendship[] = [];
 
     constructor(private userService: UserService) { }
 
@@ -22,15 +23,12 @@ export class AllFriendshipComponent implements OnInit {
     
     loadAllFriendshipList() {
     let self = this;
-    if (self.friends.size === 0) 
+    if (self.friends.length === 0) 
     { 
         self.userService.getAllFriendshipList()   
         .subscribe(response =>
         self.friends = response);
         console.log('users:' + this.friends);
     }
-  }
-  getValues(): Array<User[]> {
-    return Array.from(this.friends.values());
   }
 }
